@@ -117,6 +117,10 @@ textarea {
     border-radius: 4px;
 }
 
+.lista-tags li > img {
+    width: 12px;
+}
+
 .lista-tags {
     display: flex;
 }

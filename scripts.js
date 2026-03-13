@@ -60,7 +60,7 @@ inputTags.addEventListener('keypress', async (evento) => {
         const tagTexto = inputTags.value.trim()
         if (tagTexto !== '') {
             try {
-            let tagExiste = await verificarTagsDisponiveis(tagTexto)
+            const tagExiste = await verificarTagsDisponiveis(tagTexto)
             if (tagExiste) {
             const tagNova = document.createElement('li')
             tagNova.innerHTML = `<p>${tagTexto}</p> <img src="./img/close-black.svg" class="remove-tag">`
@@ -76,3 +76,25 @@ inputTags.addEventListener('keypress', async (evento) => {
         }
     }
 })
+
+const botaoPublicar = document.querySelector('.botao-publicar')
+
+botaoPublicar.addEventListener('click', async (evento) => {
+    evento.preventDefault()
+    const nomeDoProjeto = document.getElementById('nome').value
+    const descricaoDoProjeto = document.getElementById('descricao').value
+    const tagsProjeto = Array.from(listaTags.querySelectorAll('p')).map((tag) => tag.textContent)
+})
+
+async function publicarProjeto(nomeDoProjeto, descricaoDoProjeto, tagsProjeto) {
+    return new Promise ((resolve, reject) => {
+        setTimeout(() => {
+            const deuCerto = Math.random() > 0.5
+            if (deuCerto) {
+                resolve('Projeto publicado com sucesso!')
+            } else {
+                reject('Erro ao publicar o projeto.')
+            }
+        }, 2000)
+    })
+}
